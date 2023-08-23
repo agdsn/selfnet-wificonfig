@@ -145,7 +145,7 @@ public class HiddenLogonScreen extends Activity {
         });
 
         KeyguardManager keyguardManager = (KeyguardManager) getApplicationContext().getSystemService(KEYGUARD_SERVICE);
-        if (!keyguardManager.isDeviceSecure()){
+        if (!keyguardManager.isDeviceSecure()) {
             Builder builder = new Builder(this);
             builder.setTitle(getString(R.string.screenlock_title));
             builder.setMessage(getString(R.string.screenlock_text));
@@ -281,7 +281,7 @@ public class HiddenLogonScreen extends Activity {
         HashMap<String, String> configMap = new HashMap<>();
         // configMap.put(INT_SUBJECT_MATCH, subject_match);
         configMap.put(INT_ALTSUBJECT_MATCH, altsubject_match);
-        configMap.put(INT_ANONYMOUS_IDENTITY, "anonymous@agdsn.de");
+        configMap.put(INT_ANONYMOUS_IDENTITY, "wifi@agdsn.de");
         configMap.put(INT_IDENTITY, s_username);
         configMap.put(INT_PASSWORD, s_password);
         configMap.put(INT_EAP, "TTLS");
@@ -305,7 +305,7 @@ public class HiddenLogonScreen extends Activity {
     private void applyAndroid43EnterpriseSettings(WifiConfiguration currentConfig, HashMap<String, String> configMap) {
         try {
             CertificateFactory certFactory = CertificateFactory.getInstance("X.509");
-            InputStream in = getResources().openRawResource(R.raw.wifiroot);
+            InputStream in = getResources().openRawResource(R.raw.agdsn_wifi_root);
             // InputStream in = new ByteArrayInputStream(Base64.decode(ca.replaceAll("-----(BEGIN|END) CERTIFICATE-----", ""), 0));
             X509Certificate caCert = (X509Certificate) certFactory.generateCertificate(in);
 
